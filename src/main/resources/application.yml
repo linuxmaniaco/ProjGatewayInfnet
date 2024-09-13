@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: produto
+          uri: lb://PRODUTO-SERVICE
+          predicates:
+            - Path=/produto/**
+          filters:
+            - StripPrefix=1
+        - id: pedido
+          uri: lb://PEDIDO-SERVICE
+          predicates:
+            - Path=/pedido/**
+          filters:
+            - StripPrefix=1
+server:
+  port: 9999
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
