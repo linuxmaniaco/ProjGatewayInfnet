@@ -18,6 +18,36 @@ spring:
             - Path=/pedido/**
           filters:
             - StripPrefix=1
+        - id: vendedor
+          uri: lb://VENDEDOR-SERVICE
+          predicates:
+            - Path=/vendedor/**
+          filters:
+            - StripPrefix=1
+        - id: autenticator
+          uri: lb://AUTENTICATOR-SERVICE
+          predicates:
+            - Path=/autenticator/**
+          filters:
+            - StripPrefix=1
+        - id: nota-fiscal
+          uri: lb://NOTA-FISCAL-SERVICE
+          predicates:
+            - Path=/nota-fiscal/**
+          filters:
+            - StripPrefix=1
+        - id: avaliacao
+          uri: lb://AVALIACAO-SERVICE
+          predicates:
+            - Path=/avaliacao/**
+          filters:
+            - StripPrefix=1
+        - id: imposto-service
+          uri: lb://IMPOSTO-SERVICE
+          predicates:
+            - Path=/imposto-service/**
+          filters:
+            - StripPrefix=1
 server:
   port: 9999
 
